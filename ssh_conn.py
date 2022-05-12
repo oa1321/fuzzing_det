@@ -42,4 +42,4 @@ def filter_packets(pkt):
 
             print("[-] Fuzzing not detected")
 
-pkt = sniff(iface= "lo", filter="port 22", prn=filter_packets)
+pkt = sniff(filter="port 22", prn=filter_packets)
