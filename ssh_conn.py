@@ -30,7 +30,7 @@ def filter_packets(pkt):
             #read auth.log and check for errors
             with open("/var/log/auth.log", "r") as f:
                 #check for errors in auto.log file in the last 5 lines
-                for line in f.readlines()[-5:]:
+                for line in f.readlines()[-1]:
                     if "error" in line.lower():
                         print("[+] Fuzzing detected")
                         exit(0)
