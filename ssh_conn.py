@@ -18,11 +18,6 @@ def filter_packets(pkt):
 		    #ubuntu debian redhat centos fedora windows Windows Server UNIX OS 
 			#check the src send frequency if too high then drop the packet
             str_p = str(pkt[Raw].show())
-            words = ["ssh", "Ssh", "SSH", "sha2", "sha1", "sha256", "sha512", "md5", "md4", "md5-sha1", "md4-sha1", "rsa", "dsa", "ecdsa", "ed25519", "aes", "OpenSSH", "PuTTY", "sshdod", "SSH-2.0", "diffie-hellman" ,"~$","$", "./" ,"ubuntu" ,"debian" ,"redhat" ,"centos" ,"fedora" ,"windows" ,"Windows" ,"Server" ,"UNIX" ,"OS" ]
-            for word in words:
-                if word in str_p:
-                    print("[+] Fuzzing detected") #reason why is that if there is one thoose keyes then probbley no incryption happend and someone just send words to us
-                    exit(0)
             runner = 0 
             while(runner < len(str_p)-7):
                 temp_str = str_p[runner:runner+7]
@@ -42,7 +37,7 @@ def filter_packets(pkt):
                     if "invalid user" in line.lower():
                         print("[+] Fuzzing detected")
                         exit(0)
-                        
+
             print("[-] Fuzzing not detected")
 
 pkt = sniff(filter="port 22", prn=filter_packets)
