@@ -39,7 +39,10 @@ def filter_packets(pkt):
                     if "error" in line.lower():
                         print("[+] Fuzzing detected")
                         exit(0)
-
+                    if "invalid user" in line.lower():
+                        print("[+] Fuzzing detected")
+                        exit(0)
+                        
             print("[-] Fuzzing not detected")
 
 pkt = sniff(filter="port 22", prn=filter_packets)
