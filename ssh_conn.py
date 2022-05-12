@@ -17,7 +17,7 @@ def filter_packets(pkt):
             str_p = ""
 		    #ubuntu debian redhat centos fedora windows Windows Server UNIX OS 
 			#check the src send frequency if too high then drop the packet
-            str_p = str(pkt[Raw].show())
+            str_p = str(pkt[Raw].load)
             runner = 0 
             while(runner < len(str_p)-7):
                 temp_str = str_p[runner:runner+7]
